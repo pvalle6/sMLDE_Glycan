@@ -1,0 +1,28 @@
+Hi Philip,
+
+Here are the steps to install it on SuperMIC:
+
+Step 1:
+# Run this command once and also add it to the .modules file
+module load python/3.8.5-anaconda-ood
+
+Step 2:
+conda init bash
+
+Step 3: Log out and back in
+
+Step 4:
+# This command starts an interactive session on a compute node since there is no GPU on the head node
+qsub -I -l walltime=2:00:00,nodes=1:ppn=36 -q v100 -A <name of your allocation>
+
+Step 5: run these commands:
+conda create -name glycowork python=3.8
+conda activate glycowork
+pip install glycowork
+
+At this point, you should be able to run "import glycowork"within a Python session. 
+
+If the command line interface is a bit challenging and Jupyter Notebook is preferred, I can help make a custom kernel for the Open OnDemand portal. Please let me know.
+
+Cheers,
+Le
