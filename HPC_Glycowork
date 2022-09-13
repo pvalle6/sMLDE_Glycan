@@ -16,7 +16,7 @@ Step 4:
 qsub -I -l walltime=2:00:00,nodes=1:ppn=36 -q v100 -A <name of your allocation>
 
 Step 5: run these commands:
-conda create -name glycowork python=3.8
+conda create --name glycowork python=3.8
 conda activate glycowork
 pip install glycowork
 
