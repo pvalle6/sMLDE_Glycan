@@ -1,0 +1,11 @@
+#!/bin/bash 
+#PBS -l nodes=1:ppn=36
+#PBS -l walltime=2:00:00
+#PBS -N flex_1
+#PBS -o flex.o
+#PBS -e flex.e 
+#PBS -q v100
+#PBS -A hpc_mlde_gb1
+#PBS -m e
+#PBS -M pvalle6@lsu.edu
+
