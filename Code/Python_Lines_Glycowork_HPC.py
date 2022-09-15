@@ -43,7 +43,9 @@ model_esm, alphabet = esm.pretrained.esm1b_t33_650M_UR50S()
 ##### PROGRAM #####
 
 #UPDATE TO HPC
-file_input = pd.read_csv('Chimeras.output', nrows = 100, header = None)
+
+filepath = "/home/pvalle6/Chimeras.output"	
+file_input = pd.read_csv(filepath, nrows = 100, header = None)
 file_input.columns = ['input']
 file_input = file_input.input.str.split(expand = True)
 proteinNameSeq = file_input.drop([1,2], axis = 1)
