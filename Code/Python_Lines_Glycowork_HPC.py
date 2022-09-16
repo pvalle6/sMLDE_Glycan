@@ -1,16 +1,16 @@
-!pip uninstall torch-scatter --yes 
-!pip uninstall torch-sparse --yes
-!pip uninstall torch-cluster --yes
-#!pip uninstall torch-spline-conv --yes
-!pip uninstall torch-geometric --yes
-!pip uninstall glycowork --y
+#pip uninstall torch-scatter --yes 
+#pip uninstall torch-sparse --yes
+#pip uninstall torch-cluster --yes
+#pip uninstall torch-spline-conv --yes
+#pip uninstall torch-geometric --yes
+#pip uninstall glycowork --y
 
-!pip install torch-scatter -f https://data.pyg.org/whl/torch-1.12.0+cu102.html
-!pip install torch-sparse --no-cache-dir -f https://data.pyg.org/whl/torch-1.12.0+cu102.html
-!pip install torch-cluster -f https://data.pyg.org/whl/torch-1.12.0+cu102.html
-!pip install torch-spline-conv -f https://data.pyg.org/whl/torch-1.12.0+cu102.html
-!pip install torch-geometric -f https://data.pyg.org/whl/torch-1.12.0+cu102.html
-!pip install glycowork
+#pip install torch-scatter -f https://data.pyg.org/whl/torch-1.12.0+cu102.html
+#pip install torch-sparse --no-cache-dir -f https://data.pyg.org/whl/torch-1.12.0+cu102.html
+#pip install torch-cluster -f https://data.pyg.org/whl/torch-1.12.0+cu102.html
+####pip install torch-spline-conv -f https://data.pyg.org/whl/torch-1.12.0+cu102.html
+#pip install torch-geometric -f https://data.pyg.org/whl/torch-1.12.0+cu102.html
+#pip install glycowork
 
 
 import torch
@@ -38,6 +38,7 @@ from IPython.display import HTML
 
 !pip install fair-esm
 import esm
+# running out of memory wtf???
 model_esm, alphabet = esm.pretrained.esm1b_t33_650M_UR50S()
 
 ##### PROGRAM #####
@@ -73,7 +74,7 @@ concatDF = pd.concat([nameDF, splitDF], ignore_index=True, sort=False, axis = 1)
 #PREDICTION OUTPUT CSV
 #MUST UPDATE TO HPC
 outprint_multi_protein_3.to_csv("output.csv",header=False, index = False)
-!gsutil ls gs://fc-0a6f0af0-7c38-45d2-9faa-2ab086ec0b09/Glycowork
-!gsutil cp "output.csv" gs://fc-0a6f0af0-7c38-45d2-9faa-2ab086ec0b09/Glycowork/output.csv
+#!gsutil ls gs://fc-0a6f0af0-7c38-45d2-9faa-2ab086ec0b09/Glycowork
+#!gsutil cp "output.csv" gs://fc-0a6f0af0-7c38-45d2-9faa-2ab086ec0b09/Glycowork/output.csv
 
 ####

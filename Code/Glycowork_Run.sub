@@ -9,4 +9,12 @@
 #PBS -m e
 #PBS -M pvalle6@lsu.edu
 
-Python_lines_Glycowork_HPC.py
+
+module load python/3.8.5-anaconda-ood
+
+conda create --name glycowork python=3.8
+conda activate glycowork
+pip install glycowork
+
+/ddnA/home/pvalle6/Python_Lines_Glycowork_HPC.py
+##
