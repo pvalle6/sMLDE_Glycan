@@ -28,6 +28,8 @@ pip install torch-cluster -f https://data.pyg.org/whl/torch-1.12.0+cu102.html
 pip install torch-geometric -f https://data.pyg.org/whl/torch-1.12.0+cu102.html
 pip install glycowork
 
+export TORCH_HOME = /ddnA/work/pvalle6/torch
+os.environ['TORCH_HOME'] = '/ddnA/work/pvalle6/torch'
 python /ddnA/project/jjung1/pvalle6/Python_Lines_Glycowork_HPC.py
 
 

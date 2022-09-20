@@ -36,6 +36,8 @@ from glycowork.glycan_data.data_entry import *
 #%load_ext autoreload
 #%autoreload 2
 
+os.environ['TORCH_HOME'] = '/ddnA/work/pvalle6/torch'
+
 #!pip install fair-esm
 import esm
 # running out of memory wtf???
