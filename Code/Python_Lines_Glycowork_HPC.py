@@ -27,16 +27,16 @@ from glycowork.glycan_data.loader import *
 from glycowork.glycan_data.data_entry import *
 #from glycowork.motif.analysis import plot_embeddings, make_heatmap, characterize_monosaccharide, get_pvals_motifs
 
-!pip install nbdev
+#!pip install nbdev
 
-import warnings
-warnings.filterwarnings("ignore")
-from nbdev.showdoc import show_doc
-from IPython.display import HTML
-%load_ext autoreload
-%autoreload 2
+#import warnings
+#warnings.filterwarnings("ignore")
+#from nbdev.showdoc import show_doc
+#from IPython.display import HTML
+#%load_ext autoreload
+#%autoreload 2
 
-!pip install fair-esm
+#!pip install fair-esm
 import esm
 # running out of memory wtf???
 model_esm, alphabet = esm.pretrained.esm1b_t33_650M_UR50S()
@@ -73,7 +73,7 @@ concatDF = pd.concat([nameDF, splitDF], ignore_index=True, sort=False, axis = 1)
 
 #PREDICTION OUTPUT CSV
 #MUST UPDATE TO HPC
-outprint_multi_protein_3.to_csv("output.csv",header=False, index = False)
+outprint_multi_protein_3.to_csv("/work/pvalle6/output.csv",header=False, index = False)
 #!gsutil ls gs://fc-0a6f0af0-7c38-45d2-9faa-2ab086ec0b09/Glycowork
 #!gsutil cp "output.csv" gs://fc-0a6f0af0-7c38-45d2-9faa-2ab086ec0b09/Glycowork/output.csv
 
