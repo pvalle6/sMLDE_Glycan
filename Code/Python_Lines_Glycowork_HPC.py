@@ -53,7 +53,7 @@ model_esm, alphabet = esm.pretrained.esm1b_t33_650M_UR50S()
 #UPDATE TO HPC
 
 filepath = "/home/pvalle6/Chimeras.output"	
-file_input = pd.read_csv(filepath, nrows = 100, header = None)
+file_input = pd.read_csv(filepath, header = None)
 file_input.columns = ['input']
 file_input = file_input.input.str.split(expand = True)
 proteinNameSeq = file_input.drop([1,2], axis = 1)
@@ -86,12 +86,12 @@ rangeDF = concatDF[concatDF.columns[1]]
 maximum = rangeDF.max(axis=0)
 minimum = rangeDF.min(axis=0)
 
-text_file = open("range.txt", "w")
-text_file.write(maximum)
-text_file.write(minimum)
+text_file = open("/ddnA/project/jjung1/pvalle6/range.txt", "w")
+text_file.write('max:' + maximum)
+text_file.write('\n')
+text_file.write('min:' + minimum)
 text_file.close()
 
-rangeOut.to_csv("/ddnA/project/jjung1/pvalle6/rangeOut.csv",header=False, index = False)
 #concatDF.to_csv("/ddnA/project/jjung1/pvalle6/output_original.csv", index = False)
 sortedConcatDF.to_csv("/ddnA/project/jjung1/pvalle6/output_sorted.csv",header=False, index = False)
 
