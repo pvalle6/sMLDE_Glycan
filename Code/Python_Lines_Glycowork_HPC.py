@@ -80,7 +80,9 @@ splitDF = outprint_multi_protein.preds.str.split(expand = True)
 splitDF = splitDF.drop([0,2,3,4,5], axis = 1)
 concatDF = pd.concat([nameDF, splitDF], ignore_index=True, sort=False, axis = 1)
 #concatDF
+sortedConcatDF = concatDF.sort_values('2')
+concatDF.to_csv("/ddnA/project/jjung1/pvalle6/output_original.csv",header=False, index = False)
+sortedConcatDF.to_csv("/ddnA/project/jjung1/pvalle6/output_sorted.csv",header=False, index = False)
 
-concatDF.to_csv("/work/pvalle6/output.csv",header=False, index = False)
 
 ####
