@@ -79,9 +79,20 @@ nameDF = outprint_multi_protein['name']
 splitDF = outprint_multi_protein.preds.str.split(expand = True)
 splitDF = splitDF.drop([0,2,3,4,5], axis = 1)
 concatDF = pd.concat([nameDF, splitDF], ignore_index=True, sort=False, axis = 1)
-#concatDF
-sortedConcatDF = concatDF.sort_values('2')
-concatDF.to_csv("/ddnA/project/jjung1/pvalle6/output_original.csv",header=False, index = False)
+
+sortedConcatDF = concatDF.sort_values(concatDF.columns[1])
+rangeDF = concatDF[concatDF.columns[1]]
+
+maximum = rangeDF.max(axis=0)
+minimum = rangeDF.min(axis=0)
+
+text_file = open("range.txt", "w")
+text_file.write(maximum)
+text_file.write(minimum)
+text_file.close()
+
+rangeOut.to_csv("/ddnA/project/jjung1/pvalle6/rangeOut.csv",header=False, index = False)
+#concatDF.to_csv("/ddnA/project/jjung1/pvalle6/output_original.csv", index = False)
 sortedConcatDF.to_csv("/ddnA/project/jjung1/pvalle6/output_sorted.csv",header=False, index = False)
 
 
