@@ -16,7 +16,7 @@
 import torch
 import glycowork
 from glycowork.ml.model_training import *
-#from glycowork.ml.models import *
+from glycowork.ml.models import *
 from glycowork.ml.processing import *
 from glycowork.ml.inference import *
 from glycowork.ml.train_test_split import *
@@ -41,9 +41,12 @@ from glycowork.glycan_data.data_entry import *
 
 #!pip install fair-esm
 import esm
-# running out of memory wtf???
-torch.hub.set_dir('/ddnA/work/pvalle6')
+
+#below is only needed once to download model 
+torch.hub.set_dir('/ddnA/project/jjung1/pvalle6/')
 model_esm, alphabet = esm.pretrained.esm1b_t33_650M_UR50S()
+
+#model, alphabet = torch.hub.load("/ddnA/project/jjung1/pvalle6/checkpoints", "esm1b_t33_650M_UR50S", source ='local')
 
 ##### PROGRAM #####
 
@@ -59,6 +62,7 @@ protein_embeddings = []
 
 
 model = prep_model('LectinOracle',1,trained=True)
+outprint_multi_protein = pd.DataFrame(columns = ['name', 'preds'])
 glycan = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl']
 
 #multiple protein, single glycan prediction getter
