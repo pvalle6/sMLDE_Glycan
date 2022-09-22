@@ -1,11 +1,37 @@
 #!/bin/bash 
 #PBS -l nodes=1:ppn=36
 #PBS -l walltime=2:00:00
-#PBS -N flex_1
-#PBS -o flex.o
-#PBS -e flex.e 
+#PBS -N Glycowork_1
+#PBS -o Glycowork.o
+#PBS -e Glycowork.e 
 #PBS -q v100
 #PBS -A hpc_mlde_gb1
 #PBS -m e
 #PBS -M pvalle6@lsu.edu
 
+
+module load python/3.8.5-anaconda-ood
+
+conda create --prefix /ddnA/project/jjung1/pvalle6/glycowork python=3.8
+source activate /ddnA/project/jjung1/pvalle6/glycowork
+# pip install nbdev
+pip install fair-esm
+
+pip uninstall torch-scatter --yes 
+pip uninstall torch-sparse --yes
+pip uninstall torch-cluster --yes
+pip uninstall torch-geometric --yes
+
+pip install torch-scatter -f https://data.pyg.org/whl/torch-1.12.0+cu102.html
+pip install torch-sparse --no-cache-dir -f https://data.pyg.org/whl/torch-1.12.0+cu102.html
+pip install torch-cluster -f https://data.pyg.org/whl/torch-1.12.0+cu102.html
+pip install torch-geometric -f https://data.pyg.org/whl/torch-1.12.0+cu102.html
+pip install glycowork
+
+#doesn't work remove later 9/22/22
+#export TORCH_HOME = /ddnA/work/pvalle6/torch
+
+python /ddnA/project/jjung1/pvalle6/Python_Lines_Glycowork_HPC.py
+
+
+##
