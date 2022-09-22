@@ -36,11 +36,13 @@ from glycowork.glycan_data.data_entry import *
 #%load_ext autoreload
 #%autoreload 2
 
-os.environ['TORCH_HOME'] = '/ddnA/work/pvalle6/torch'
+#doesn't work remove later 9/22/22
+#os.environ['TORCH_HOME'] = '/ddnA/work/pvalle6/torch'
 
 #!pip install fair-esm
 import esm
 # running out of memory wtf???
+torch.hub.set_dir('/ddnA/work/pvalle6')
 model_esm, alphabet = esm.pretrained.esm1b_t33_650M_UR50S()
 
 ##### PROGRAM #####
