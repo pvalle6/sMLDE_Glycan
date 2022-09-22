@@ -60,6 +60,8 @@ proteinNameSeq = file_input.drop([1,2], axis = 1)
 proteinNameSeq.columns = ['NCR', 'SEQUENCE']
 protein_embeddings = []
 
+protein_seq = proteinNameSeq['SEQUENCE'].tolist()
+protein_dict = get_esm1b_representations(protein_seq, model_esm, alphabet)
 
 model = prep_model('LectinOracle',1,trained=True)
 outprint_multi_protein = pd.DataFrame(columns = ['name', 'preds'])
@@ -79,10 +81,6 @@ splitDF = splitDF.drop([0,2,3,4,5], axis = 1)
 concatDF = pd.concat([nameDF, splitDF], ignore_index=True, sort=False, axis = 1)
 #concatDF
 
-#PREDICTION OUTPUT CSV
-#MUST UPDATE TO HPC
-outprint_multi_protein_3.to_csv("/work/pvalle6/output.csv",header=False, index = False)
-#!gsutil ls gs://fc-0a6f0af0-7c38-45d2-9faa-2ab086ec0b09/Glycowork
-#!gsutil cp "output.csv" gs://fc-0a6f0af0-7c38-45d2-9faa-2ab086ec0b09/Glycowork/output.csv
+concatDF.to_csv("/work/pvalle6/output.csv",header=False, index = False)
 
 ####
