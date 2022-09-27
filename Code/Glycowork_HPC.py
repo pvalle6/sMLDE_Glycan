@@ -27,12 +27,14 @@ model_esm, alphabet = esm.pretrained.esm1b_t33_650M_UR50S()
 #length of the chimera file rows
 maxRow = 4700000
 #initial row skip is 0 due to starting at 1
+#adjust for continuation of previous job
 rowSkip = 0
 # memory excedes past 3000 per run
 nrowsCount = 2000
 filepath = "/home/pvalle6/Chimeras.output"	
 
 #possibly make this a function
+#if continuing previous job, adjust row skip 
 while((rowSkip - nrowsCount) < maxRow):
     file_input = pd.read_csv(filepath, skiprows = rowSkip, nrows = nrowsCount, header = None)
     #iterates the while loop
