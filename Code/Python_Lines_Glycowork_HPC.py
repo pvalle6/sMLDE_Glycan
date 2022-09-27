@@ -22,7 +22,7 @@ model_esm, alphabet = esm.pretrained.esm1b_t33_650M_UR50S()
 
 ##### PROGRAM #####
 
-maxRow = 10000
+maxRow = 4700000
 rowSkip = 0
 nrowsCount = 2000
 filepath = "/home/pvalle6/Chimeras.output"	
@@ -55,23 +55,24 @@ while((rowSkip - nrowsCount) < maxRow):
         outprint_multi_protein.at[a, 'preds'] = str((get_lectin_preds((rows['SEQUENCE']), glycan,model,protein_dict))['pred'])
         a +=1
 
+    # recombines individual predictions and removes unnecessary formatting s
     nameDF = outprint_multi_protein['name']
     splitDF = outprint_multi_protein.preds.str.split(expand = True)
     splitDF = splitDF.drop([0,2,3,4,5], axis = 1)
     concatDF = pd.concat([nameDF, splitDF], ignore_index=True, sort=False, axis = 1)
 
     sortedConcatDF = concatDF.sort_values(concatDF.columns[1])
-    rangeDF = concatDF[concatDF.columns[1]]
+    #rangeDF = concatDF[concatDF.columns[1]]
 
-    maximum = rangeDF.max(axis=0)
-    minimum = rangeDF.min(axis=0)
+    #maximum = rangeDF.max(axis=0)
+    #minimum = rangeDF.min(axis=0)
 
-    outRange = (f"/ddnA/project/jjung1/pvalle6/preds/range/range.txt")
-    text_file = open(outRange, "a")
-    text_file.write(maximum)
-    text_file.write('\n')
-    text_file.write(minimum)
-    text_file.close()
+    #outRange = (f"/ddnA/project/jjung1/pvalle6/preds/range/range.txt")
+    #text_file = open(outRange, "a")
+    #text_file.write(maximum)
+    #text_file.write('\n')
+    #text_file.write(minimum)
+    #text_file.close()
 
     
     
