@@ -1,3 +1,4 @@
+#!pip install all below
 import torch
 import glycowork
 from glycowork.ml.model_training import *
@@ -16,19 +17,22 @@ from glycowork.glycan_data.data_entry import *
 import esm
 
 torch.hub.set_dir('/ddnA/project/jjung1/pvalle6/')
+#it appears that this function checks for local aswell
 model_esm, alphabet = esm.pretrained.esm1b_t33_650M_UR50S()
-
+#pure local model call
 #model, alphabet = torch.hub.load("/ddnA/project/jjung1/pvalle6/checkpoints", "esm1b_t33_650M_UR50S", source ='local')
 
 ##### PROGRAM #####
 
+#length of the chimera file rows
 maxRow = 4700000
+#initial row skip is 0 due to starting at 1
 rowSkip = 0
+# memory excedes past 3000 per run
 nrowsCount = 2000
 filepath = "/home/pvalle6/Chimeras.output"	
 
-
-#possible make this a function
+#possibly make this a function
 while((rowSkip - nrowsCount) < maxRow):
     file_input = pd.read_csv(filepath, skiprows = rowSkip, nrows = nrowsCount, header = None)
     #iterates the while loop
@@ -64,6 +68,7 @@ while((rowSkip - nrowsCount) < maxRow):
     sortedConcatDF = concatDF.sort_values(concatDF.columns[1])
     #rangeDF = concatDF[concatDF.columns[1]]
 
+    #the range of the sequence predictions was depreciated through csv file 
     #maximum = rangeDF.max(axis=0)
     #minimum = rangeDF.min(axis=0)
 
@@ -74,8 +79,7 @@ while((rowSkip - nrowsCount) < maxRow):
     #text_file.write(minimum)
     #text_file.close()
 
-    
-    
+    # prediction file appended below
     outPreds = (f"/ddnA/project/jjung1/pvalle6/preds/sorted/output_sorted.csv")
     sortedConcatDF.to_csv(outPreds,mode = 'a',header=False, index = False)
 
