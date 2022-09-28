@@ -68,19 +68,6 @@ while((rowSkip - nrowsCount) < maxRow):
     concatDF = pd.concat([nameDF, splitDF], ignore_index=True, sort=False, axis = 1)
 
     sortedConcatDF = concatDF.sort_values(concatDF.columns[1])
-    #rangeDF = concatDF[concatDF.columns[1]]
-
-    #the range of the sequence predictions was depreciated through csv file 
-    #maximum = rangeDF.max(axis=0)
-    #minimum = rangeDF.min(axis=0)
-
-    #outRange = (f"/ddnA/project/jjung1/pvalle6/preds/range/range.txt")
-    #text_file = open(outRange, "a")
-    #text_file.write(maximum)
-    #text_file.write('\n')
-    #text_file.write(minimum)
-    #text_file.close()
-
     # prediction file appended below
     outPreds = (f"/ddnA/project/jjung1/pvalle6/preds/sorted/output_sorted.csv")
     sortedConcatDF.to_csv(outPreds,mode = 'a',header=False, index = False)
