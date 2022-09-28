@@ -51,7 +51,11 @@ while((rowSkip - nrowsCount) < maxRow):
 
     model = prep_model('LectinOracle',1,trained=True)
     outprint_multi_protein = pd.DataFrame(columns = ['name', 'preds'])
+    # original glycan
     glycan = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl']
+    #4mer = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)XylGlcA(b1-3)Xyl(a1-3)GlcA(b1-3)XylGlcA(b1-3)Xyl(a1-3)GlcA(b1-3)XylGlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl']
+    #10mer = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)XylGlcA(b1-3)Xyl(a1-3)GlcA(b1-3)XylGlcA(b1-3)Xyl(a1-3)GlcA(b1-3)XylGlcA(b1-3)Xyl(a1-3)GlcA(b1-3)XylGlcA(b1-3)Xyl(a1-3)GlcA(b1-3)XylGlcA(b1-3)Xyl(a1-3)GlcA(b1-3)XylGlcA(b1-3)Xyl(a1-3)GlcA(b1-3)XylGlcA(b1-3)Xyl(a1-3)GlcA(b1-3)XylGlcA(b1-3)Xyl(a1-3)GlcA(b1-3)XylGlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl']
+
 
     #multiple protein, single glycan prediction getter
     a=0
