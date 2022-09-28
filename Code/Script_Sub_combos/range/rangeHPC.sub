@@ -1,0 +1,14 @@
+#!/bin/bash 
+#PBS -l nodes=1:ppn=6
+#PBS -l walltime=2:00:00
+#PBS -N range1
+#PBS -o range.o
+#PBS -e range.e 
+#PBS -q single
+#PBS -A hpc_mlde_gb1
+#PBS -m e
+#PBS -M pvalle6@lsu.edu
+
+python /ddnA/project/jjung1/pvalle6/range.py
+
+##
