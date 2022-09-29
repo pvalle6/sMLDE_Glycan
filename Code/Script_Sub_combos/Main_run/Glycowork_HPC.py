@@ -68,10 +68,10 @@ while((rowSkip - nrowsCount) < maxRow):
     splitDF = splitDF.drop([0,2,3,4,5], axis = 1)
     concatDF = pd.concat([nameDF, splitDF], ignore_index=True, sort=False, axis = 1)
 
-    sortedConcatDF = concatDF.sort_values(concatDF.columns[1])
+    #sortedConcatDF = concatDF.sort_values(concatDF.columns[1])
     # prediction file appended below
     outPreds = (f"/ddnA/project/jjung1/pvalle6/preds/sorted/output_sorted.csv")
-    sortedConcatDF.to_csv(outPreds,mode = 'a',header=False, index = False)
+    concatDF.to_csv(outPreds,mode = 'a',header=False, index = False)
 
 
     ####
