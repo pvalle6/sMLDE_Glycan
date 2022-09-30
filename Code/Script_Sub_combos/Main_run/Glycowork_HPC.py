@@ -24,10 +24,10 @@ model_esm, alphabet = esm.pretrained.esm1b_t33_650M_UR50S()
 maxRow = 4700000
 #initial row skip is 0 due to starting at 1
 #adjust for continuation of previous job
-rowSkip = 0
+rowSkip = 1310228
 # memory excedes past 3000 per run
 nrowsCount = 2000
-filepath = "/home/pvalle6/Chimeras.output"	
+filepath = "/ddnA/jjung1/pvalle6/Chimeras.output"	
 
 #possibly make this a function
 #if continuing previous job, adjust row skip 
