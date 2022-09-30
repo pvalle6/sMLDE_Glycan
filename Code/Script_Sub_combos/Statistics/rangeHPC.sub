@@ -9,6 +9,7 @@
 #PBS -m e
 #PBS -M pvalle6@lsu.edu
 
+#calls python script to find the range of an output file
 python /ddnA/project/jjung1/pvalle6/range.py
 
 ##
