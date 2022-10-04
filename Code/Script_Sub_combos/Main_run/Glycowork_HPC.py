@@ -27,7 +27,7 @@ maxRow = 4700000
 rowSkip = 1310228
 # memory excedes past 3000 per run
 nrowsCount = 2000
-filepath = "/ddnA/jjung1/pvalle6/Chimeras.output"	
+filepath = "/ddnA/project/jjung1/pvalle6/chimeras.output"	
 
 #possibly make this a function
 #if continuing previous job, adjust row skip 
