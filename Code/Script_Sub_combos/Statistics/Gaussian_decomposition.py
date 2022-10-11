@@ -106,8 +106,8 @@ ax.set_ylim(0, 1)
 ax.set_xlabel('$x$')
 ax.set_ylabel(r'$p({\rm class}|x)$')
 
-ax.text(-5, 0.3, 'class 1', rotation='vertical')
-ax.text(0, 0.5, 'class 2', rotation='vertical')
-ax.text(3, 0.3, 'class 3', rotation='vertical')
+ax.text(0, 0.3, 'class 1', rotation='vertical')
+ax.text(0, 0.7, 'class 2', rotation='vertical')
+ax.text(0, 1, 'class 3', rotation='vertical')
 
 plt.show()

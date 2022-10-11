@@ -21,7 +21,7 @@ model_esm, alphabet = esm.pretrained.esm1b_t33_650M_UR50S()
 ##### PROGRAM #####
 
 #length of the chimera file rows
-maxRow = 4700000
+maxRow = 4782969
 #initial row skip is 0 due to starting at 1
 #adjust for continuation of previous job
 rowSkip = 1310228
