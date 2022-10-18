@@ -28,7 +28,7 @@ from sklearn.mixture import GaussianMixture
 #                    random_state.normal(0, 1, 500),
 #                    random_state.normal(3, 0.5, 150)]).reshape(-1, 1)
 
-X = np.loadtxt(R"C:\Users\valle\OneDrive\Documents\EP_DE_Aggrin\Statistics\4_7_million_dimer.csv",
+X = np.loadtxt(R"C:\Users\valle\OneDrive\Documents\EP_DE_Aggrin\Statistics\4_7_mil_10mer.csv",
                  delimiter=",", usecols = 1)
 
 X = X.reshape(-1,1)
@@ -95,19 +95,20 @@ ax.legend(loc=2)
 ax = fig.add_subplot(133)
 
 p = responsibilities
-p = p[:, (1, 0, 2)]  # rearrange order so the plot looks better
+#p = p[:, (1, 0, 2)]  # rearrange order so the plot looks better
 p = p.cumsum(1).T
 
 ax.fill_between(x, 0, p[0], color='gray', alpha=0.3)
 ax.fill_between(x, p[0], p[1], color='gray', alpha=0.5)
-ax.fill_between(x, p[1], 1, color='gray', alpha=0.7)
+ax.fill_between(x, p[1], 1, color='gray', alpha=0.7)   
 ax.set_xlim(0, 1.3)
 ax.set_ylim(0, 1)
 ax.set_xlabel('$x$')
 ax.set_ylabel(r'$p({\rm class}|x)$')
 
 ax.text(0, 0.3, 'class 1', rotation='vertical')
-ax.text(0, 0.7, 'class 2', rotation='vertical')
-ax.text(0, 1, 'class 3', rotation='vertical')
+ax.text(0.5, 1, 'class 2', rotation='vertical')
+#ax.text(3, 0.3, 'class 3', rotation='vertical')
 
 plt.show()
+
