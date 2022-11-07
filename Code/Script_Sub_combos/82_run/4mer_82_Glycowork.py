@@ -19,13 +19,15 @@ model_esm, alphabet = esm.pretrained.esm1b_t33_650M_UR50S()
 #model, alphabet = torch.hub.load("/ddnA/project/jjung1/pvalle6/checkpoints", "esm1b_t33_650M_UR50S", source ='local')
 
 ##### PROGRAM #####
-filepath = "/ddnA/project/jjung1/pvalle6/preds/4mer_1stlib_82.csv"	
-
+filepath = "/ddnA/project/jjung1/pvalle6/82.csv"
+rowSkip = 0
+maxRow = 82
+nrowsCount = 0
 #possibly make this a function
 #if continuing previous job, adjust row skip 
 #split into 2000 iterations to allow garbage collection 
 while((rowSkip - nrowsCount) < maxRow):
-    file_input = pd.read_csv(filepath,, header = None)
+    file_input = pd.read_csv(filepath, header = None)
     file_input.columns = ['UNI', 'SEQUENCE']
     protein_embeddings = []
 
@@ -56,7 +58,7 @@ while((rowSkip - nrowsCount) < maxRow):
 
     #sortedConcatDF = concatDF.sort_values(concatDF.columns[1])
     # prediction file appended below
-    outPreds = (f"/ddnA/project/jjung1/pvalle6/preds/sorted/82/82_out.csv")
+    outPreds = (f"/ddnA/project/jjung1/pvalle6/preds/sorted/82/4mer_1stlib_82.csv")
     concatDF.to_csv(outPreds,mode = 'a',header=False, index = False)
 
 
