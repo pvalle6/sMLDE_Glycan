@@ -58,7 +58,7 @@ while((rowSkip - nrowsCount) < maxRow):
 
     #sortedConcatDF = concatDF.sort_values(concatDF.columns[1])
     # prediction file appended below
-    outPreds = (f"/ddnA/project/jjung1/pvalle6/preds/sorted/82/4mer_1stlib_82.csv")
+    outPreds = (f"/ddnA/project/jjung1/pvalle6/preds/82/4mer_1stlib_82.csv")
     concatDF.to_csv(outPreds,mode = 'a',header=False, index = False)
 
 

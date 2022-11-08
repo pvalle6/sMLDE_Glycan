@@ -28,7 +28,7 @@ from sklearn.mixture import GaussianMixture
 #                    random_state.normal(0, 1, 500),
 #                    random_state.normal(3, 0.5, 150)]).reshape(-1, 1)
 
-X = np.loadtxt(R"C:\Users\valle\OneDrive\Documents\EP_DE_Aggrin\Statistics\4_7_mil_10mer.csv",
+X = np.loadtxt(R"C:\Users\valle\OneDrive\Documents\EP_DE_Aggrin\Statistics\82\dimer_1stlib_82.csv",
                  delimiter=",", usecols = 1)
 
 X = X.reshape(-1,1)
