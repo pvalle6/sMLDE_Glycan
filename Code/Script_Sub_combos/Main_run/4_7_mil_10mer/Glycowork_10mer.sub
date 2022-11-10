@@ -1,9 +1,9 @@
 #!/bin/bash 
 #PBS -l nodes=1:ppn=36
 #PBS -l walltime=72:00:00
-#PBS -N Glycowork_1
-#PBS -o Glycowork.o
-#PBS -e Glycowork.e 
+#PBS -N Glycowork_4mer
+#PBS -o Glycowork_4mer.o
+#PBS -e Glycowork_4mer.e 
 #PBS -q v100
 #PBS -A hpc_mlde_gb1
 #PBS -m e
@@ -37,7 +37,7 @@ pip install torch-geometric -f https://data.pyg.org/whl/torch-1.12.0+cu102.html
 pip install glycowork
 
 #calls the script to calculate predictions
-python /ddnA/project/jjung1/pvalle6/Glycowork_HPC.py
+python /ddnA/project/jjung1/pvalle6/Glycowork_10mer.py
 
 
 ##

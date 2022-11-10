@@ -19,31 +19,19 @@ model_esm, alphabet = esm.pretrained.esm1b_t33_650M_UR50S()
 #model, alphabet = torch.hub.load("/ddnA/project/jjung1/pvalle6/checkpoints", "esm1b_t33_650M_UR50S", source ='local')
 
 ##### PROGRAM #####
-
-#length of the chimera file rows
-maxRow = 4700000
-#initial row skip is 0 due to starting at 1
-#adjust for continuation of previous job
+filepath = "/ddnA/project/jjung1/pvalle6/82.csv"	
 rowSkip = 0
-# memory excedes past 3000 per run
-nrowsCount = 2000
-filepath = "/home/pvalle6/Chimeras.output"	
-
+maxRow = 82
+nrowsCount = 0
 #possibly make this a function
 #if continuing previous job, adjust row skip 
 #split into 2000 iterations to allow garbage collection 
 while((rowSkip - nrowsCount) < maxRow):
-    file_input = pd.read_csv(filepath, skiprows = rowSkip, nrows = nrowsCount, header = None)
-    #iterates the while loop
-    rowSkip = rowSkip + nrowsCount
-
-    file_input.columns = ['input']
-    file_input = file_input.input.str.split(expand = True)
-    proteinNameSeq = file_input.drop([1,2], axis = 1)
-    proteinNameSeq.columns = ['NCR', 'SEQUENCE']
+    file_input = pd.read_csv(filepath, header = None)
+    file_input.columns = ['UNI', 'SEQUENCE']
     protein_embeddings = []
 
-    protein_seq = proteinNameSeq['SEQUENCE'].tolist()
+    protein_seq = file_input['SEQUENCE'].tolist()
     protein_dict = get_esm1b_representations(protein_seq, model_esm, alphabet)
 
     model = prep_model('LectinOracle',1,trained=True)
@@ -56,8 +44,8 @@ while((rowSkip - nrowsCount) < maxRow):
     #multiple protein, single glycan prediction getter
     # calls the list of proteins with their embedding pairs and a selected glycan
     a=0
-    for index, rows in proteinNameSeq.iterrows():
-        outprint_multi_protein.at[a, 'name'] = rows['NCR'] # replace with the actual name when reading from a file
+    for index, rows in file_input.iterrows():
+        outprint_multi_protein.at[a, 'name'] = rows['UNI'] # replace with the actual name when reading from a file
         #[pred] is at the end because get_lec returns an array and we only need the pred value
         outprint_multi_protein.at[a, 'preds'] = str((get_lectin_preds((rows['SEQUENCE']), glycan,model,protein_dict))['pred'])
         a +=1
@@ -70,7 +58,7 @@ while((rowSkip - nrowsCount) < maxRow):
 
     #sortedConcatDF = concatDF.sort_values(concatDF.columns[1])
     # prediction file appended below
-    outPreds = (f"/ddnA/project/jjung1/pvalle6/preds/sorted/output_sorted.csv")
+    outPreds = (f"/ddnA/project/jjung1/pvalle6/preds/82/dimer_1stlib_82.csv")
     concatDF.to_csv(outPreds,mode = 'a',header=False, index = False)
 
 
