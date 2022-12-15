@@ -31,7 +31,7 @@ while((rowSkip) < maxRow):
     file_input = pd.read_csv(filepath, header = None)
     file_input.columns = ['UNI', 'SEQUENCE']
     rowSkip = rowSkip + nrowsCount
-    
+    #applied fix from 971afa8
     protein_seq = file_input['SEQUENCE'].tolist()
     protein_dict = get_esm1b_representations(protein_seq, model_esm, alphabet)
 

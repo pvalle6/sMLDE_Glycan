@@ -22,21 +22,23 @@ model_esm, alphabet = esm.pretrained.esm1b_t33_650M_UR50S()
 dimer = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl']
 tetramer = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl']
 decamer = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl']
-twentymer = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)'] 
-lectin = "/ddnA/project/jjung1/pvalle6/mammalian_lectins.csv" 
+twentymer = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl'] 
+lectin = "/ddnA/project/jjung1/pvalle6/82.csv" 
 
-def run_glycowork(lectin_doc, glycan):
+def run_glycowork(lectin_doc, glycanIN):
+    glycan = glycanIN
     filepath = lectin_doc
     rowSkip = 0
-    maxRow = 34
-    nrowsCount = 0
+    maxRow = 82
+    nrowsCount = 82
     #possibly make this a function
     #if continuing previous job, adjust row skip 
     #split into 2000 iterations to allow garbage collection 
-    while((rowSkip - nrowsCount) < maxRow):
+    while((rowSkip) < maxRow):
         file_input = pd.read_csv(filepath, header = None)
         file_input.columns = ['UNI', 'SEQUENCE']
-        
+        rowSkip = rowSkip + nrowsCount
+        #applied fix from 971afa8
         protein_seq = file_input['SEQUENCE'].tolist()
         protein_dict = get_esm1b_representations(protein_seq, model_esm, alphabet)
 
