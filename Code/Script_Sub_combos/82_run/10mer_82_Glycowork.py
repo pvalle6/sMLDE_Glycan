@@ -27,9 +27,10 @@ nrowsCount = 0
 #if continuing previous job, adjust row skip 
 #split into 2000 iterations to allow garbage collection 
 while((rowSkip - nrowsCount) < maxRow):
+    
     file_input = pd.read_csv(filepath, header = None)
     file_input.columns = ['UNI', 'SEQUENCE']
-    protein_embeddings = []
+    
 
     protein_seq = file_input['SEQUENCE'].tolist()
     protein_dict = get_esm1b_representations(protein_seq, model_esm, alphabet)

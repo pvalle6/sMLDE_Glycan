@@ -41,7 +41,7 @@ while((rowSkip - nrowsCount) < maxRow):
     file_input = file_input.input.str.split(expand = True)
     proteinNameSeq = file_input.drop([1,2], axis = 1)
     proteinNameSeq.columns = ['NCR', 'SEQUENCE']
-    protein_embeddings = []
+    
 
     protein_seq = proteinNameSeq['SEQUENCE'].tolist()
     protein_dict = get_esm1b_representations(protein_seq, model_esm, alphabet)
