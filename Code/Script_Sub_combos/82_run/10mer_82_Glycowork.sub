@@ -37,7 +37,7 @@ pip install torch-geometric -f https://data.pyg.org/whl/torch-1.12.0+cu102.html
 pip install glycowork
 
 #calls the script to calculate predictions
-python /ddnA/project/jjung1/pvalle6/82_scripts/10mer_82_Glycowork.py
+python /ddnA/project/jjung1/pvalle6/10mer_82_Glycowork.py
 
 
 ##

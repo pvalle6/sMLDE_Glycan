@@ -38,10 +38,10 @@ while((rowSkip) < maxRow):
     model = prep_model('LectinOracle',1,trained=True)
     outprint_multi_protein = pd.DataFrame(columns = ['name', 'preds'])
     # original glycan
-    glycan = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl']#dimer 
+    #glycan = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl']#dimer 
     #four_mer = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl']
     #ten_mer = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl']
-
+    glycan = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl']
     #multiple protein, single glycan prediction getter
     # calls the list of proteins with their embedding pairs and a selected glycan
     a=0
@@ -59,7 +59,7 @@ while((rowSkip) < maxRow):
 
     #sortedConcatDF = concatDF.sort_values(concatDF.columns[1])
     # prediction file appended below
-    outPreds = (f"/ddnA/project/jjung1/pvalle6/preds/dimer_34.csv")
+    outPreds = (f"/ddnA/project/jjung1/pvalle6/preds/twentymer_34.csv")
     concatDF.to_csv(outPreds,mode = 'a',header=False, index = False)
 
 
