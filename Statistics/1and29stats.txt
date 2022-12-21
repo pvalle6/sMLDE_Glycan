@@ -1,0 +1,30 @@
+C:\Users\valle\OneDrive\Documents\EP_DE_Aggrin\Statistics\library14_1\4mer_library14_1_preds.csv
+1.0274604728498131
+1.022317
+1.721154
+0.352232
+C:\Users\valle\OneDrive\Documents\EP_DE_Aggrin\Statistics\library14_1\10mer_library14_1_preds.csv
+1.1626801944240124
+1.166027
+1.799578
+0.53518
+C:\Users\valle\OneDrive\Documents\EP_DE_Aggrin\Statistics\library14_1\dimer_library14_1_preds.csv
+0.7129932637278229
+0.688321
+1.43104
+0.032358
+C:\Users\valle\OneDrive\Documents\EP_DE_Aggrin\Statistics\library14_29\library14_29 10mer.csv
+1.1272696765214245
+1.126647
+1.399086
+0.778512
+C:\Users\valle\OneDrive\Documents\EP_DE_Aggrin\Statistics\library14_29\library14_29 fourmer.csv
+1.0054674765157385
+1.00743
+1.335498
+0.586591
+C:\Users\valle\OneDrive\Documents\EP_DE_Aggrin\Statistics\library14_29\library14_29_dimer.csv
+0.7035750993520515
+0.703627
+1.105942
+0.260058
