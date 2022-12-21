@@ -1,4 +1,4 @@
-# EP_DE_Agrin
+# Probing lectin-matriglycan binding
 
 * Code contains 
   * Anvil Notebooks for Glycowork
