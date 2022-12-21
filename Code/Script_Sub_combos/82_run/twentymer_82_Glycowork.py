@@ -20,44 +20,33 @@ model_esm, alphabet = esm.pretrained.esm1b_t33_650M_UR50S()
 
 ##### PROGRAM #####
 
-#length of the chimera file rows
-maxRow = 4782969
-#initial row skip is 0 due to starting at 1
-#adjust for continuation of previous job
+filepath = "/ddnA/project/jjung1/pvalle6/fox.csv" 	
 rowSkip = 0
-# memory excedes past 3000 per run
-nrowsCount = 2000
-filepath = "/ddnA/project/jjung1/pvalle6/chimeras.output"	
-
+maxRow = 34
+nrowsCount = 34
 #possibly make this a function
 #if continuing previous job, adjust row skip 
 #split into 2000 iterations to allow garbage collection 
-while((rowSkip - nrowsCount) < maxRow):
-    file_input = pd.read_csv(filepath, skiprows = rowSkip, nrows = nrowsCount, header = None)
-    #iterates the while loop
+while((rowSkip) < maxRow):
+    file_input = pd.read_csv(filepath, header = None)
+    file_input.columns = ['UNI', 'SEQUENCE']
     rowSkip = rowSkip + nrowsCount
-
-    file_input.columns = ['input']
-    file_input = file_input.input.str.split(expand = True)
-    proteinNameSeq = file_input.drop([1,2], axis = 1)
-    proteinNameSeq.columns = ['NCR', 'SEQUENCE']
-    
-
-    protein_seq = proteinNameSeq['SEQUENCE'].tolist()
+    #applied fix from 971afa8
+    protein_seq = file_input['SEQUENCE'].tolist()
     protein_dict = get_esm1b_representations(protein_seq, model_esm, alphabet)
 
     model = prep_model('LectinOracle',1,trained=True)
     outprint_multi_protein = pd.DataFrame(columns = ['name', 'preds'])
     # original glycan
     #glycan = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl']#dimer 
-    glycan = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl'] #four-mer
-    #glycan = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl'] #ten-mer
-
+    #four_mer = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl']
+    #ten_mer = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl']
+    glycan = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl']
     #multiple protein, single glycan prediction getter
     # calls the list of proteins with their embedding pairs and a selected glycan
     a=0
-    for index, rows in proteinNameSeq.iterrows():
-        outprint_multi_protein.at[a, 'name'] = rows['NCR'] # replace with the actual name when reading from a file
+    for index, rows in file_input.iterrows():
+        outprint_multi_protein.at[a, 'name'] = rows['UNI'] # replace with the actual name when reading from a file
         #[pred] is at the end because get_lec returns an array and we only need the pred value
         outprint_multi_protein.at[a, 'preds'] = str((get_lectin_preds((rows['SEQUENCE']), glycan,model,protein_dict))['pred'])
         a +=1
@@ -70,7 +59,7 @@ while((rowSkip - nrowsCount) < maxRow):
 
     #sortedConcatDF = concatDF.sort_values(concatDF.columns[1])
     # prediction file appended below
-    outPreds = (f"/ddnA/project/jjung1/pvalle6/preds/sorted/4_7_mil_4mer.csv")
+    outPreds = (f"/ddnA/project/jjung1/pvalle6/preds/twentymer_34.csv")
     concatDF.to_csv(outPreds,mode = 'a',header=False, index = False)
 
 
