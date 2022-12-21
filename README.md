@@ -1,4 +1,4 @@
-# Probing lectin-matriglycan binding
+# lectin-matriglycan
 
 * Code contains 
   * Anvil Notebooks for Glycowork
