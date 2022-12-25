@@ -26,7 +26,7 @@ nrowsCount = 82
 #possibly make this a function
 #if continuing previous job, adjust row skip 
 #split into 2000 iterations to allow garbage collection 
-while((rowSkip) < maxRow):
+while((rowSkip - nrowsCount) < maxRow):
     rowSkip = rowSkip + nrowsCount
     file_input = pd.read_csv(filepath, header = None)
     file_input.columns = ['UNI', 'SEQUENCE']

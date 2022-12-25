@@ -63,13 +63,13 @@ def run_glycowork(lectin_doc, glycanIN):
         #sortedConcatDF = concatDF.sort_values(concatDF.columns[1])
         # prediction file appended below
         if glycan == dimer:
-            outPreds = (f"/ddnA/project/jjung1/pvalle6/preds/mammalian_lectin_preds/dimer_mammalian_preds.csv")
+            outPreds = (f"/ddnA/project/jjung1/pvalle6/preds/dimer_mammalian_preds.csv")
         if glycan == tetramer:
-            outPreds = (f"/ddnA/project/jjung1/pvalle6/preds/mammalian_lectin_preds/tetramer_mammalian_preds.csv")
+            outPreds = (f"/ddnA/project/jjung1/pvalle6/preds/tetramer_mammalian_preds.csv")
         if glycan == decamer:
-            outPreds = (f"/ddnA/project/jjung1/pvalle6/preds/mammalian_lectin_preds/decamer_mammalian_preds.csv")
+            outPreds = (f"/ddnA/project/jjung1/pvalle6/preds/decamer_mammalian_preds.csv")
         if glycan == twentymer:
-            outPreds = (f"/ddnA/project/jjung1/pvalle6/preds/mammalian_lectin_preds/twentymer_mammalian_preds.csv")
+            outPreds = (f"/ddnA/project/jjung1/pvalle6/preds/twentymer_mammalian_preds.csv")
         concatDF.to_csv(outPreds,mode = 'a',header=False, index = False)
     ####
 
