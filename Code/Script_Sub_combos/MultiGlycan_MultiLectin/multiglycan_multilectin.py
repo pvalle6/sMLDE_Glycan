@@ -28,6 +28,6 @@ glycan_list = glycan_file.values.tolist()
 protein_dict = get_esm1b_representations(protein_seq, model_esm, alphabet)
 
 model = prep_model('LectinOracle',1,trained=True)
-preds = get_lectin_preds(protein_seq, glycan_list, model, protein_dic)
+preds = get_lectin_preds(protein_seq, glycan_list, model, protein_dict)
 preds.to_csv(prediction_file,mode = 'a',header=False, index = False)
 #
