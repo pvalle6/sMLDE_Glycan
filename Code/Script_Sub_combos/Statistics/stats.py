@@ -1,24 +1,23 @@
-import pandas
+"""Gets the statistics of a csv file
+with an index and a single column"""
 import numpy as np
 
-R"C:\Users\valle\OneDrive\Documents\EP_DE_Aggrin\Statistics\library14_1\4mer_library14_1_preds.csv"
+
 def statistics(inputpath):
-	X = np.loadtxt(inputpath, delimiter=",", usecols = 1)
-	r1 = np.mean(X)
-	r2 = np.median(X)
-	maximum = np.max(X)
-	minimium = np.min(X)
+    x = np.loadtxt(inputpath, delimiter=",", usecols=1)
+    r1 = np.mean(x)
+    r2 = np.median(x)
+    maximum = np.max(x)
+    minimium = np.min(x)
 
-	print('path:' + inputpath)
-	print('mean:' +r1)
-	print('median:' +r2)
-	print('min:' + minimium)
-	print('max:' + maximum)
+    print('path:' + inputpath)
+    print('mean:' + str(r1))
+    print('median:' + str(r2))
+    print('min:' + str(minimium))
+    print('max:' + str(maximum))
 
 
-statistics(R"C:\Users\valle\OneDrive\Documents\EP_DE_Aggrin\Statistics\library14_1\4mer_library14_1_preds.csv")
-statistics(R"C:\Users\valle\OneDrive\Documents\EP_DE_Aggrin\Statistics\library14_1\10mer_library14_1_preds.csv")
-statistics(R"C:\Users\valle\OneDrive\Documents\EP_DE_Aggrin\Statistics\library14_1\dimer_library14_1_preds.csv")
-statistics(R"C:\Users\valle\OneDrive\Documents\EP_DE_Aggrin\Statistics\library14_29\library14_29 10mer.csv")
-statistics(R"C:\Users\valle\OneDrive\Documents\EP_DE_Aggrin\Statistics\library14_29\library14_29 fourmer.csv")
-statistics(R"C:\Users\valle\OneDrive\Documents\EP_DE_Aggrin\Statistics\library14_29\library14_29_dimer.csv")
+statistics(R"C:\Users\Hotsauce141\Downloads\Preds\Preds\dimer_mammalian_preds.csv")
+statistics(R"C:\Users\Hotsauce141\Downloads\Preds\Preds\tetramer_mammalian_preds.csv")
+statistics(R"C:\Users\Hotsauce141\Downloads\Preds\Preds\decamer_mammalian_preds.csv")
+statistics(R"C:\Users\Hotsauce141\Downloads\Preds\Preds\twentymer_mammalian_preds.csv")
