@@ -1,4 +1,4 @@
-# EP_DE_Agrin
+# Lectin-Matriglycan Project 
 
 * Code contains 
   * Anvil Notebooks for Glycowork
