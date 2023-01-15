@@ -25,9 +25,9 @@ filepath = '/ddnA/project/jjung1/pvalle6/import.txt'
 prediction_file = '/ddnA/project/jjung1/pvalle6/preds.csv'
 lines = loadtxt(filepath, dtype=str, comments="#", delimiter=",", unpack=False)
 #glycan_list = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-4)Xyl']
-protein_emb_dic = get_esm1b_representations(LG_4_5, model_esm, alphabet)
+protein_emb_dic = get_esm1b_representations(IIH6, model_esm, alphabet)
 
 model = prep_model('LectinOracle', 1, trained=True)
-preds = get_lectin_preds(LG_4_5[0], lines, model, protein_emb_dic)
+preds = get_lectin_preds(IIH6[0], lines, model, protein_emb_dic)
 preds.to_csv(prediction_file, mode='a', header=False, index=False)
 #
