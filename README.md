@@ -1,5 +1,4 @@
-# lectin-matriglycan
-
+# Lectin-Matriglycan Project 
 * Code contains 
   * Anvil Notebooks for Glycowork
   * HPC instructions for running of Glycowork written for project. 

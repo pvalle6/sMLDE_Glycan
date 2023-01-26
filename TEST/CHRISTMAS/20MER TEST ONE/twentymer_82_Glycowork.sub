@@ -12,8 +12,15 @@
 
 module load python/3.8.5-anaconda-ood
 
+
+# probably need to increase the walltime for the main run 
+
+# commented as it does not need to be recreated everytime, need to uncomment to create for the first time
+# conda create --prefix /ddnA/project/jjung1/pvalle6/glycowork python=3.8
 source activate /ddnA/project/jjung1/pvalle6/glycowork
 
+
+#calls the script to calculate predictions
 python /ddnA/project/jjung1/pvalle6/twentymer_82_Glycowork.py
 
 

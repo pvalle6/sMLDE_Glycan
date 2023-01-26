@@ -1,0 +1,16 @@
+#probably dont need to reinstall the same dependencies everytime, need to comment out until reinstall/recreate
+# pip install nbdev
+#pip install fair-esm
+
+#possibly need to remove as it is wasting resources 
+#pip uninstall torch-scatter --yes 
+#pip uninstall torch-sparse --yes
+#pip uninstall torch-cluster --yes
+#pip uninstall torch-geometric --yes
+
+#possibly unnecessary as it is wasting resources
+#pip install torch-scatter -f https://data.pyg.org/whl/torch-1.13.0+cu117.html
+#pip install torch-sparse --no-cache-dir -f https://data.pyg.org/whl/torch-1.13.0+cu117.html
+#pip install torch-cluster -f https://data.pyg.org/whl/torch-1.13.0+cu117.html
+#pip install torch-geometric -f https://data.pyg.org/whl/torch-1.13.0+cu117.html
+#pip install glycowork

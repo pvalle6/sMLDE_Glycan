@@ -20,10 +20,10 @@ model_esm, alphabet = esm.pretrained.esm1b_t33_650M_UR50S()
 
 ##### PROGRAM #####
 
-filepath = "/ddnA/project/jjung1/pvalle6/fox.csv" 	
+filepath = "/ddnA/project/jjung1/pvalle6/82.csv" 	
 rowSkip = 0
-maxRow = 34
-nrowsCount = 34
+maxRow = 82
+nrowsCount = 82
 #possibly make this a function
 #if continuing previous job, adjust row skip 
 #split into 2000 iterations to allow garbage collection 
@@ -38,17 +38,15 @@ while((rowSkip) < maxRow):
     model = prep_model('LectinOracle',1,trained=True)
     outprint_multi_protein = pd.DataFrame(columns = ['name', 'preds'])
     # original glycan
-    #glycan = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl']#dimer 
-    #four_mer = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl']
-    #ten_mer = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl']
-    glycan = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl']
+    
+    twe = ['GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl']
     #multiple protein, single glycan prediction getter
     # calls the list of proteins with their embedding pairs and a selected glycan
     a=0
     for index, rows in file_input.iterrows():
         outprint_multi_protein.at[a, 'name'] = rows['UNI'] # replace with the actual name when reading from a file
         #[pred] is at the end because get_lec returns an array and we only need the pred value
-        outprint_multi_protein.at[a, 'preds'] = str((get_lectin_preds((rows['SEQUENCE']), glycan,model,protein_dict))['pred'])
+        outprint_multi_protein.at[a, 'preds'] = str((get_lectin_preds((rows['SEQUENCE']), twe,model,protein_dict))['pred'])
         a +=1
 
     # recombines individual predictions and removes unnecessary formatting s
