@@ -3,7 +3,8 @@ repeat = 'GlcA(b1-3)Xyl(a1-3)'
 base = 'GlcA(b1-4)Xyl'
 units_add = ''
 glycans = []
-for i in range(9):
+for i in range(10):
+	units_add = ''
 	for y in range(i):
 		units_add = units_add + repeat
 	glycans.append(units_add + base + expansion)
