@@ -34,18 +34,22 @@ LNA1 = LG1+EGF1+LG2+EGF2+LG3
 
 prot_seq = [LG1,LG2,LG3, LG1_EG1, LG2_EG2, LNA1]
 count=0
-for proteins in prot_seq:
-	lines = ['GlcA(b1-4)Xyl',
-	'GlcA(b1-3)Xyl(a1-3)GlcA(b1-4)Xyl',
-	'GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-4)Xyl',
-	'GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-4)Xyl',
-	'GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-4)Xyl',
-	'GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-4)Xyl',
-	'GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-4)Xyl',
-	'GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-4)Xyl',
-	'GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-3)Xyl(a1-3)GlcA(b1-4)Xyl'
-	]
 
+expansion = '(b1-4)RibOP-ol(5-1)RibOP-ol(5-3)GalNAC(b1-3)GlcNAC'
+repeat = 'GlcA(b1-3)Xyl(a1-3)'
+base = 'GlcA(b1-4)Xyl'
+units_add = ''
+glycans = []
+for i in range(9):
+	for y in range(i):
+		units_add = units_add + repeat
+	glycans.append(units_add + base + expansion)
+
+print(glycans)
+
+
+for proteins in prot_seq:
+	lines = [base+expansion, repeat+base+expansion, repeat
 	protein_emb_dic = get_esm1b_representations([proteins], model_esm, alphabet)
 
 	leor = prep_model('LectinOracle', 1, trained=True)
