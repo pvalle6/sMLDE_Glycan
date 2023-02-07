@@ -35,7 +35,7 @@ LNA1 = LG1+EGF1+LG2+EGF2+LG3
 prot_seq = [LG1,LG2,LG3, LG1_EG1, LG2_EG2, LNA1]
 count=0
 
-expansion = '(b1-4)RibOP-ol(5-1)RibOP-ol(5-3)GalNAc(b1-3)GlcNAc'
+expansion = '(b1-4)RibOP-ol(5-1)RibOP-ol(5-3)GalNAc(b1-3)GlcNAc(b1-4)Man'
 repeat = 'GlcA(b1-3)Xyl(a1-3)'
 base = 'GlcA(b1-4)Xyl'
 units_add = ''
