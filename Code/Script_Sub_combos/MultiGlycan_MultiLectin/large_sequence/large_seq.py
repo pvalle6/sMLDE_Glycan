@@ -27,21 +27,23 @@ base = 'GlcA(b1-4)Xyl'
 units_add = ''
 glycans = []
 results = pd.DataFrame()
+count = 0
 for i in range(9):
 	units_add = ''
 	for y in range(i):
 		units_add = units_add + repeat
 	glycans.append(units_add + base + expansion)
 
-for proteins in prot_seq:
-	results.insert(preds)
+for proteins in protein_seq:
 	protein_emb_dic = get_esm1b_representations([proteins], model_esm, alphabet)
 
 	leor = prep_model('LectinOracle', 1, trained=True)
 	preds = get_lectin_preds(proteins, glycans, leor, protein_emb_dic)
-
+	preds.sort_values(by=['motif'], inplace = True, ascending=False)
+	preds.drop('motif', axis = 1)
+	results.concat(preds)
 	count = count +1
 
-
+results.to_csv('/ddnA/project/jjung1/pvalle6/results.csv')
 	#preds.to_csv('/ddnA/project/jjung1/pvalle6/preds_repeat_{0}.csv'.format(count), mode='a', header=False, index=False)
 	#
