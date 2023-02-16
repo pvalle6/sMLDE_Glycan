@@ -50,7 +50,7 @@ for i in range(10):
 	units_add = ''
 	for y in range(i):
 		units_add = units_add + repeat
-	glycans.append(units_add + base + expansion)
+	glycans.append(units_add + base)
 
 for proteins in prot_seq:
 	protein_emb_dic = get_esm1b_representations([proteins], model_esm, alphabet)
