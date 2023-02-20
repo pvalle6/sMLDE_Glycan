@@ -8,3 +8,4 @@ Statistics/4_7_million_dimer_hist.pdf
 *.xlsx
 *.o
 *.e
+/Code/Script_Sub_combos/MultiGlycan_MultiLectin/.pytest_cache/
