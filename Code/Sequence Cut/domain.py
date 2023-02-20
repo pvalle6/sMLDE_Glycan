@@ -1,8 +1,9 @@
+"""Script used to cut unannotated domains quickly"""
 import pyperclip
 
 run = True
 protein = input("ENTER PROTEIN SEQUENCE:\n")
-while(run):
+while run:
     start = int(input("ENTER START RESIDUE:\n"))
     end = int(input("ENTER END RESIDUE:\n"))
 
