@@ -1,0 +1,8 @@
+setuptools~=65.5.0
+numpy~=1.24.0
+pandas~=1.4.4
+matplotlib~=3.5.2
+scikit-learn~=1.0.2
+glycowork
+torch
+esm
