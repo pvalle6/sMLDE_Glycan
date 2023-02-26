@@ -9,3 +9,8 @@ Statistics/4_7_million_dimer_hist.pdf
 *.o
 *.e
 /Code/Script_Sub_combos/MultiGlycan_MultiLectin/.pytest_cache/
+Statistics/R_Graphs/Multidomain only/lama1
+*.R
+Statistics/R_Graphs/Overall/LAMA1
+Statistics/R_Graphs/Overall/LAMA2
+Statistics/Plot_Making.RData
