@@ -18,7 +18,7 @@ model_esm, alphabet = esm.pretrained.esm1b_t33_650M_UR50S()
 seq_csv = "/ddnA/project/jjung1/pvalle6/seq.csv"
 protein_df = pd.read_csv(seq_csv, header=None)
 protein_seq = protein_df[0].values.tolist()
-glycans = generate_matriglycan(8)
+glycans = generate_matriglycan(20)
 
 for proteins in protein_seq:
 	protein_emb_dic = get_esm1b_representations([proteins], model_esm, alphabet)

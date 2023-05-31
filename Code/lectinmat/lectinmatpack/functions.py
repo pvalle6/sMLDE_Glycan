@@ -8,7 +8,6 @@ def generate_matriglycan(length: int) -> list:
     base = 'GlcA(b1-4)Xyl'
     units_add = ''
     glycans = []
-    # count = 0
     for i in range(length):
         units_add = ''
         for y in range(i):
