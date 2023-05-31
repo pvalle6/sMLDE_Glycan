@@ -7,9 +7,9 @@
 #PBS -q workq
 #PBS -A hpc_mlde_gb1
 #PBS -m e
-#PBS -M ogambl1@lsu.edu
+#PBS -M pvalle6@lsu.edu
 # Variables
-export glycandock="/ddnA/project/jjung1/packages/rosetta/main/source/build/src/release/linux/3.10/64/x86/gcc/4.8/default/dock_glycans.default.linuxgccrelease"
+export glycandock=/ddnA/project/jjung1/packages/rosetta/main/source/build/src/release/linux/3.10/64/x86/gcc/4.8/default/dock_glycans.default.linuxgccrelease
         # Path to Glycan Dock
 export ipath=/ddnA/project/jjung1/pvalle6/glycanDock_complex/
         # Path to folder that contains all input .pdb files  (Default: input)
@@ -30,4 +30,4 @@ do
 done
 
 # Run
-parallel $glycandock @flags -in:path $ipath/ -out:prefix $opath/{/}/ -scorefile $opath/{/}/{/.}.score.sc -s {} ::: $ifiles
+parallel $glycandock @glycanflags -in:path $ipath/ -out:prefix $opath/{/}/ -scorefile $opath/{/}/{/.}.score.sc -s {} ::: $ifiles
